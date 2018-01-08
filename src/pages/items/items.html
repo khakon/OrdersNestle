@@ -1,0 +1,36 @@
+<!--
+  Generated template for the ItemsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div   id="sale-documents">
+        <dx-data-grid id="gridContainer"
+                    [dataSource]="items"
+                    (onRowPrepared)="onRowPrepared($event)"
+                    (onCellPrepared)="onCellPrepared($event)"
+                    (onToolbarPreparing)="onToolbarPreparing($event)">
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-search-panel [visible]="true"
+                              [width]="240"
+                              placeholder="Поиск..."></dxo-search-panel>
+            <dxi-column caption="Товар" dataField="product"></dxi-column>
+            <dxi-column caption="Кол" dataField="quant" width="60"></dxi-column>
+            <dxi-column caption="Цена" dataField="price" width="80"></dxi-column>
+            <dxi-column caption="Сумма" dataField="sum" width="80"></dxi-column>
+            <dxo-summary>
+              <dxi-total-item column="sum" summaryType="sum" [customizeText]="customizeSum"></dxi-total-item>
+            </dxo-summary>
+      </dx-data-grid>
+    </div>
+</ion-content>
