@@ -49,8 +49,9 @@ export class AppHelpersProvider {
     right.forEach(function(item){
         rightHash[item.order] = item;
     });
+    console.log(left);
+    console.log(rightHash);
     left.forEach(function(item){
-        console.log(rightHash);
         if(rightHash.hasOwnProperty(item.id)){
           let rightItem = rightHash[item.id];
           result.push({customer: item.customer, dateOrder:item.docDate,idOrder:item.idDoc,sumOrder:item.sum, dateInvoice: rightItem.docDate, idInvoice:rightItem.idDoc, sumInvoice:rightItem.sum});
@@ -59,6 +60,14 @@ export class AppHelpersProvider {
           result.push({customer: item.customer, dateOrder:item.docDate,idOrder:item.idDoc,sumOrder:item.sum, dateInvoice: '', idInvoice:'', sumInvoice:''});
         }
     });
-    return result;
+    return result.sort(function (a, b) {
+                        if (a.dateOrder > b.dateOrder || a.customer > b.customer) {
+                          return 1;
+                        }
+                        if (a.dateOrder < b.dateOrder || a.customer < b.customer) {
+                          return -1;
+                        }
+                          return 0;
+                        });
   }
 }

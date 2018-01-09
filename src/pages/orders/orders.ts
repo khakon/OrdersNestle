@@ -50,6 +50,7 @@ export class OrdersPage {
   }
   onCellPreparedPivot(e): void {
     if (e.rowType == "data" && (e.columnIndex == 3 || e.columnIndex == 6)) {
+        console.log(e.value);
         e.cellElement.textContent = new AppHelpersProvider().numberWithSpaces(e.value);
     }
     if (e.rowType == "data" && (e.columnIndex == 1 || e.columnIndex == 4)) {
@@ -58,6 +59,7 @@ export class OrdersPage {
   }
   onCellPrepared(e): void {
     if (e.rowType == "data" && e.columnIndex == 3) {
+        console.log(e.value);
         e.cellElement.textContent = new AppHelpersProvider().numberWithSpaces(e.value);
     }
     if (e.rowType == "data" && e.columnIndex == 0) {
@@ -93,6 +95,7 @@ export class OrdersPage {
 
   };
   customizeSum(data: any): any {
+    console.log(data.value);
     return new AppHelpersProvider().numberWithSpaces(data.value);
   };
   onSelectionChangedOrder(e):void{
